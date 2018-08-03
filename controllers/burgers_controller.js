@@ -32,4 +32,11 @@ routes.post('/devour', (req, res) => {
     })
 })
 
+routes.post('/trash', (req, res) => {
+    let id = req.body.burger
+    orm.deleteRow('burgers', 'id', id, function (data) {
+        res.redirect('/')
+    })
+})
+
 module.exports = routes
